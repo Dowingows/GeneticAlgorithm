@@ -8,9 +8,9 @@ import math
 
 SURVIVAL_RATE = 0.2
 CROSSOVER_RATE = (1 - SURVIVAL_RATE)
-MUTATION_RATE = 0.1
+MUTATION_RATE = 0.2
 
-GENERATIONS_NUMBER = 100
+GENERATIONS_NUMBER = 30
 POPULATION_NUMBER = 6
 
 
@@ -153,7 +153,7 @@ def roulette_wheel(population):
 
     total_sum = 0
 
-    # ordena os valores da populacao de maneira decrescente pelo valor do fitness para a seleção
+    # ordena os valores da populacao de maneira crescente pelo valor do fitness para a seleção
     population = sorted(population, key=greater_fitness)
 
     # calcula o somatório do fitness de todos os individuos
@@ -263,6 +263,17 @@ def mutation(population):
     return population
 
 
+# Verifica se encontrou pelo menos uma solução
+def evaluate(population):
+
+    for p_index in range(len(population)):
+        x, y, z, w = chromosome_breaker(population[p_index])
+        if goal(x, y, z, w):
+            return True
+
+    return False
+
+
 def prinIdvs(population):
     print("Ints: ", end=" ")
     for i in range(len(population)):
@@ -280,8 +291,10 @@ prinIdvs(new_population)
 print(new_population)
 
 current_generation = 1
+result_evaluate = False
 
-while current_generation <= GENERATIONS_NUMBER:
+while not result_evaluate or current_generation <= GENERATIONS_NUMBER:
+
     print("* * * GERAÇÃO {0} * * *".format(current_generation))
     # selecao dos individuos para a reproducao
     print("Seleção...")
@@ -306,9 +319,16 @@ while current_generation <= GENERATIONS_NUMBER:
     prinIdvs(new_population)
     #print("* * * * * * * * * * *")
 
+    result_evaluate = evaluate(new_population)
+
     current_generation += 1
 
-print("Nova população: ")
+print("");
+print("+ - - - - - - - - - - RESULTADO : - - - - - - - - - - +")
+
+if result_evaluate:
+    print("Encontrou solucao na geração: {0}".format(str(current_generation-1)))
+
 print(new_population)
 prinIdvs(new_population)
 
