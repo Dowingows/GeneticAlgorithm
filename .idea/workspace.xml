@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83471cbc-14cb-474d-8cd9-89eb792d9609" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/relatorios" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algoritmo_genetico_ia.py" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmo_genetico_ia.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,11 +18,20 @@
       <file leaf-file-name="algoritmo_genetico_ia.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/algoritmo_genetico_ia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="329" column="31" lean-forward="true" selection-start-line="329" selection-start-column="31" selection-end-line="329" selection-end-column="31" />
+            <state relative-caret-position="101">
+              <caret line="200" column="69" selection-start-line="200" selection-start-column="69" selection-end-line="200" selection-end-column="69" />
               <folding>
                 <element signature="e#80#93#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="relatorios" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/relatorios">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -36,17 +47,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fitness(population[i])</find>
-      <find>roulet</find>
-      <find>print</find>
-      <find>range</find>
-      <find>range(</find>
-      <find>selected</find>
-      <find>GENOTYPES_NUMBER</find>
-      <find>roulette_</find>
-      <find>create</find>
-      <find>individual</find>
-      <find>create_indi</find>
       <find>create_pop</find>
       <find>oper</find>
       <find>operation</find>
@@ -62,10 +62,21 @@
       <find>is_valid</find>
       <find>selel</find>
       <find>mutacao</find>
-      <find>crossover</find>
-      <find>crossover(</find>
       <find>survi</find>
       <find>mutation</find>
+      <find>create</find>
+      <find>fitn</find>
+      <find>calc</find>
+      <find>185, 15</find>
+      <find>184, 14</find>
+      <find>fitness</find>
+      <find>crossover</find>
+      <find>(167, 15)</find>
+      <find>one_po</find>
+      <find>tw</find>
+      <find>two</find>
+      <find>crossover(</find>
+      <find>one_</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -75,6 +86,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/GeneticAlgorithm.py" />
+        <option value="$PROJECT_DIR$/relatorios" />
         <option value="$PROJECT_DIR$/algoritmo_genetico_ia.py" />
       </list>
     </option>
@@ -188,7 +200,7 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960877" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19055118" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5464567" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -232,10 +244,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/relatorios">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/algoritmo_genetico_ia.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="329" column="31" lean-forward="true" selection-start-line="329" selection-start-column="31" selection-end-line="329" selection-end-column="31" />
+        <state relative-caret-position="101">
+          <caret line="200" column="69" selection-start-line="200" selection-start-column="69" selection-end-line="200" selection-end-column="69" />
           <folding>
             <element signature="e#80#93#0" expanded="true" />
           </folding>

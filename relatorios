@@ -1,0 +1,16 @@
++------------------------------+
+SURVIVAL_RATE = 0.3
+CROSSOVER_RATE = (1 - SURVIVAL_RATE)
+MUTATION_RATE = 0.1
+
+GENERATIONS_NUMBER = 30
+POPULATION_NUMBER = 6
+
+
+Crossover rate algorithm
+
+random (one or two) = avg: 508 gnr
+one = avg:153
+two = avg: 108
+
++------------------------------+

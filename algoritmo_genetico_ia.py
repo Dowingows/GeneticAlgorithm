@@ -8,7 +8,7 @@ import math
 
 SURVIVAL_RATE = 0.2
 CROSSOVER_RATE = (1 - SURVIVAL_RATE)
-MUTATION_RATE = 0.2
+MUTATION_RATE = 0.07
 
 GENERATIONS_NUMBER = 30
 POPULATION_NUMBER = 6
@@ -116,7 +116,9 @@ def fitness(chromossome):
     distance1 = goal_val - op[0]
     distance2 = goal_val_2 - op[1]
 
-    fitness_value = (200 - distance1) + (20-distance2)
+    weight2 = round((20-distance2) * 0.7)
+
+    fitness_value = (200 - distance1) + weight2
 
     return fitness_value
 
@@ -193,10 +195,22 @@ def one_point_crossover(parent_1, parent_2):
     return son_1
 
 
+def two_point_crossover(parent_1, parent_2):
+    length = len(parent_1)
+    start_cut_point = random.randint(0, length - 3)
+    end_cut_point = start_cut_point + random.randint(1, BINARY_SIZE)
+
+    son_1 = list(parent_1)
+    parent_2 = list(parent_2)
+    son_1[start_cut_point:end_cut_point] = parent_2[start_cut_point: end_cut_point]
+
+    return "".join(son_1)
+
+
 def crossover(population):
     sons = []
     length = len(population)
-
+    _cross = 2
     while len(sons) < length:
 
         i_1 = random.randint(0, len(population) - 1)
@@ -204,8 +218,10 @@ def crossover(population):
 
         if i_1 == i_2:
             continue
-
-        new_son = one_point_crossover(population[i_1], population[i_2])
+        if _cross == 1:
+            new_son = one_point_crossover(population[i_1], population[i_2])
+        else:
+            new_son = two_point_crossover(population[i_1], population[i_2])
 
         if is_valid_chromosome(new_son):
             sons.append(new_son)
@@ -320,6 +336,8 @@ while not result_evaluate or current_generation <= GENERATIONS_NUMBER:
     #print("* * * * * * * * * * *")
 
     result_evaluate = evaluate(new_population)
+    if result_evaluate:
+        break
 
     current_generation += 1
 
@@ -327,8 +345,11 @@ print("");
 print("+ - - - - - - - - - - RESULTADO : - - - - - - - - - - +")
 
 if result_evaluate:
-    print("Encontrou solucao na geração: {0}".format(str(current_generation-1)))
+    print("Encontrou solução na geração: {0}".format(str(current_generation-1)))
+else:
+    print("Não encontrou solução")
 
+new_population = sorted(new_population, key=greater_fitness, reverse=True)
 print(new_population)
 prinIdvs(new_population)
 
