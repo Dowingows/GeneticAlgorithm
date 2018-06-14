@@ -4,12 +4,13 @@
 import random
 import math
 
+#mudar função objetivo para igual e criar função para saber se o cromossomo é valido!!!!!!!!!!
 
 SURVIVAL_RATE = 0.2
 CROSSOVER_RATE = (1 - SURVIVAL_RATE)
 MUTATION_RATE = 0.1
 
-GENERATIONS_NUMBER = 30
+GENERATIONS_NUMBER = 1
 POPULATION_NUMBER = 6
 
 
@@ -61,17 +62,9 @@ def create_population(individuals_number):
 
     while numb < individuals_number:
         individual = create_individual()
-        x, y, z, w = chromosome_breaker(individual)
-        x = bin2dec(x)
-        y = bin2dec(y)
-        z = bin2dec(z)
-        w = bin2dec(w)
 
-        #print(individual)
-        #print(chromosome_breaker(individual))
-        #print(operation(x, y, z, w))
-
-        if goal(x, y, z, w):
+        # verifica se é um cromossomo válido, ou seja, dentro das restrições impostas pelo problema
+        if is_valid_chromosome(individual):
             numb = numb + 1
             population.append(individual)
 
@@ -84,13 +77,24 @@ def chromosome_breaker(chromosome):
     z = chromosome[BINARY_SIZE*2:BINARY_SIZE*3]
     w = chromosome[BINARY_SIZE*3:BINARY_SIZE*4]
 
-    return x, y, z, w
+    return int(bin2dec(x)), int(bin2dec(y)), int(bin2dec(z)), int(bin2dec(w))
 
 
-def goal(x, y, z, w):
+def is_valid_chromosome(chromosome):
+    x, y, z, w = chromosome_breaker(chromosome)
+
     cond1, cond2 = operation(x,y,z,w)
 
     if cond1 <= 185 and cond2 <= 15:
+        return True
+    else:
+        return False
+
+
+def goal(x, y, z, w):
+    cond1, cond2 = operation(x, y, z, w)
+
+    if cond1 == 185 and cond2 == 15:
         return True
     else:
         return False
@@ -103,11 +107,6 @@ def operation(x, y, z, w):
 def fitness(chromossome):
 
     x, y, z, w = chromosome_breaker(chromossome)
-
-    x = bin2dec(x)
-    y = bin2dec(y)
-    z = bin2dec(z)
-    w = bin2dec(w)
 
     goal_val = 185
     goal_val_2 = 15
@@ -125,11 +124,6 @@ def fitness(chromossome):
 def print_chrom2number(chromossome):
 
     x, y, z, w = chromosome_breaker(chromossome)
-
-    x = bin2dec(x)
-    y = bin2dec(y)
-    z = bin2dec(z)
-    w = bin2dec(w)
 
     print("({0}, {1}, {2}, {3}) = {4}".format(x, y, z, w, operation(x, y, z, w)))
 
@@ -168,9 +162,9 @@ def roulette_wheel(population):
 
     individuals = []
     selected_individuals_indexes = []
-
+    n_individuas_current = 0
     # seleciona o número de individuos que irão fazer o crossover
-    for j in range(number_individuals):
+    while n_individuas_current < number_individuals:
         # sorteia um número aleatório entre 0 e o somatório do fitness
 
         random_number = random.randint(0, total_sum)
@@ -184,10 +178,10 @@ def roulette_wheel(population):
             if fitness_acum > random_number and (index not in selected_individuals_indexes):
                 individuals.append(population[index])
                 selected_individuals_indexes.append(index)
-
+                n_individuas_current += 1
                 break
-
-    return sorted(individuals, key=greater_fitness,reverse=True)
+   
+    return sorted(individuals, key=greater_fitness, reverse=True)
 
 
 def one_point_crossover(parent_1, parent_2):
@@ -201,50 +195,77 @@ def one_point_crossover(parent_1, parent_2):
 
 def crossover(population):
     sons = []
+    length = len(population)
+    c_index = 0
 
-    for index in range(len(population)):
+    while c_index < length:
 
         i_1 = random.randint(0, len(population) - 1)
         i_2 = random.randint(0, len(population) - 1)
 
-        sons.append(one_point_crossover(population[i_1], population[i_2]))
+        new_son = one_point_crossover(population[i_1], population[i_2])
+
+        if is_valid_chromosome(new_son):
+            sons.append(new_son)
+            c_index += 1
 
     return sons
+
+
+def change_gene(individual, index):
+
+    new_ind = list(individual)
+
+    if new_ind[index] == '0':
+        new_ind[index] = '1'
+    else:
+        new_ind[index] = '0'
+
+    return "".join(new_ind)
 
 
 def mutation_gene(individual):
 
     length = len(individual)
-    cut_point = random.randint(0, length - 1)
+    #numero de genes que serão mutados entre 1 e 3
+    num_mutacoes = random.randint(1, 3)
 
-    newInd = list(individual)
-
-    if newInd[cut_point] == '0':
-        newInd[cut_point] = '1'
-    else:
-        newInd[cut_point] = '0'
+    for i in range(num_mutacoes):
+        cut_point = random.randint(0, length - 1)
+        individual = change_gene(individual, cut_point)
 
     return individual
 
 
 def mutation(population):
 
-    number_random = random.randint(0,100)
+    number_random = random.randint(0, 100)
 
-    # mutação acontece
+    # mutação acontece?
     if number_random <= MUTATION_RATE * 100:
+        print("Mutação aconteceu! ")
         #escolhe aleatoriamente o individuo
         index = random.randint(0, len(population)-1)
+        new_ind = mutation_gene(population[index])
+
+        #se a mutação não gerar um descendente válido, realiza mutações até encontrar
+        while not is_valid_chromosome(new_ind):
+            index = random.randint(0, len(population) - 1)
+            new_ind = mutation_gene(population[index])
+
         population[index] = mutation_gene(population[index])
+
+    else:
+        print("Mutação não aconteceu. :( ")
 
     return population
 
 
 def prinIdvs(population):
-    print("Inteiros: ")
+    print("Ints: ", end=" ")
     for i in range(len(population)):
         x, y, z, w = chromosome_breaker(population[i])
-        print("[{0}, {1}, {2}, {3} = {4} ]".format(bin2dec(x),bin2dec(y),bin2dec(z),bin2dec(w),operation(bin2dec(x),bin2dec(y),bin2dec(z),bin2dec(w))),end =" ")
+        print("[{0}, {1}, {2}, {3} = {4} ]".format(x, y, z, w, operation(x, y, z, w)), end=" ")
 
     print("")
 
@@ -252,31 +273,34 @@ def prinIdvs(population):
 # início do algoritmo genético
 new_population = create_population(POPULATION_NUMBER)
 print("===> População inicial <===")
-#prinIdvs(new_population)
+prinIdvs(new_population)
 #print("Binários:")
-#print(new_population)
+print(new_population)
 
 
 for c_i in range(GENERATIONS_NUMBER):
-    #print("* * * GERAÇÃO {0} * * *".format(c_i + 1))
+    print("* * * GERAÇÃO {0} * * *".format(c_i + 1))
     # selecao dos individuos para a reproducao
+    print("Seleção...")
     selected_individuals = roulette_wheel(new_population)
-    #prinIdvs(selected_individuals)
+    prinIdvs(selected_individuals)
     # realiza o cruzamento
-    #print("Crossover...")
+    print("Crossover...")
     n_sons = crossover(selected_individuals)
-    #prinIdvs(n_sons)
+    prinIdvs(n_sons)
     # chance de mutação
+    print("Mutação?...")
     n_sons = mutation(n_sons)
-    #print("Mutação?...")
-    #prinIdvs(n_sons)
+    prinIdvs(n_sons)
     # pega os sobreviventes
     survivavors = get_survivors(new_population)
-    #print("Sobreviventes...")
-    #prinIdvs(survivavors)
+    print("Sobreviventes...")
+    prinIdvs(survivavors)
 
     # nova população
     new_population = (survivavors + n_sons)
+    print("* * * Nova população * * * ")
+    prinIdvs(new_population)
     #print("* * * * * * * * * * *")
 
 print("Nova população: ")
