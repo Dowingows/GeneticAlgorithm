@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83471cbc-14cb-474d-8cd9-89eb792d9609" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/GeneticAlgorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/GeneticAlgorithm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algoritmo_genetico_ia.py" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmo_genetico_ia.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GeneticAlgorithm.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/GeneticAlgorithm.py">
+      <file leaf-file-name="algoritmo_genetico_ia.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/algoritmo_genetico_ia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="313">
+              <caret line="234" column="43" selection-start-line="234" selection-start-column="43" selection-end-line="234" selection-end-column="43" />
               <folding>
                 <element signature="e#80#93#0" expanded="true" />
               </folding>
@@ -36,8 +36,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>genotype</find>
-      <find>INDIVIDUALS_NUMBER</find>
       <find>INDIVIDUAL_NUMBER</find>
       <find>POPULATION_NUMBER</find>
       <find>Q</find>
@@ -58,7 +56,16 @@
       <find>roulette_</find>
       <find>crossover</find>
       <find>create</find>
+      <find>individual</find>
       <find>create_indi</find>
+      <find>create_pop</find>
+      <find>oper</find>
+      <find>operation</find>
+      <find>6 3 2 1</find>
+      <find>17</find>
+      <find>create_popula</find>
+      <find>create_popu</find>
+      <find>cond</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -68,6 +75,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/GeneticAlgorithm.py" />
+        <option value="$PROJECT_DIR$/algoritmo_genetico_ia.py" />
       </list>
     </option>
   </component>
@@ -97,6 +105,9 @@
       <pane id="Scope" />
     </panes>
   </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/domingosjunior/PycharmProjects/algoritmo-genetico/GeneticAlgorithm.py" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -109,7 +120,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.algoritmo_genetico_ia">
     <configuration name="GeneticAlgorithm" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="algoritmo-genetico" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,8 +139,31 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="algoritmo_genetico_ia" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="algoritmo-genetico" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/algoritmo_genetico_ia.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.GeneticAlgorithm" />
+      <item itemvalue="Python.algoritmo_genetico_ia" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.algoritmo_genetico_ia" />
         <item itemvalue="Python.GeneticAlgorithm" />
       </list>
     </recent_temporary>
@@ -157,7 +191,7 @@
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.6251969" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3023622" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Favorites" side_tool="true" />
@@ -183,8 +217,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GeneticAlgorithm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="201">
+          <caret line="246" lean-forward="true" selection-start-line="246" selection-end-line="250" selection-end-column="12" />
+          <folding>
+            <element signature="e#80#93#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algoritmo_genetico_ia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="234" column="43" selection-start-line="234" selection-start-column="43" selection-end-line="234" selection-end-column="43" />
           <folding>
             <element signature="e#80#93#0" expanded="true" />
           </folding>
