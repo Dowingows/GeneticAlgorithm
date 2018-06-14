@@ -5,12 +5,12 @@ import random
 import math
 
 
-SURVIVAL_RATE = 0.2
+SURVIVAL_RATE = 0.3
 CROSSOVER_RATE = (1 - SURVIVAL_RATE)
 MUTATION_RATE = 0.01
 
-GENERATIONS_NUMBER = 3
-POPULATION_NUMBER = 8
+GENERATIONS_NUMBER = 200
+POPULATION_NUMBER = 30
 
 BINARY_SIZE = 2
 GENOTYPES_NUMBER = 3
@@ -43,8 +43,17 @@ def create_individual():
 
     individual = "";
 
-    for i in range(GENOTYPES_NUMBER):
-        individual += (dec2bin(random.randint(0, 3)) + "")
+    g_sum = 0
+
+    for index in range(GENOTYPES_NUMBER):
+        n_number = random.randint(0, 3)
+
+        if g_sum + n_number >= 6:
+            n_number = random.randint(0, g_sum + n_number - 6)
+
+        g_sum += n_number
+
+        individual += str(dec2bin(n_number))
 
     return individual
 
@@ -62,7 +71,7 @@ def create_population(individuals_number):
 def chromosome_breaker(chromosome):
     x = chromosome[0:BINARY_SIZE]
     y = chromosome[BINARY_SIZE:BINARY_SIZE*2]
-    z = chromosome[BINARY_SIZE*2:BINARY_SIZE*4]
+    z = chromosome[BINARY_SIZE*2:BINARY_SIZE*3]
 
     return x, y, z
 
@@ -84,12 +93,10 @@ def fitness(chromossome):
     x = bin2dec(x)
     y = bin2dec(y)
     z = bin2dec(z)
-    #print("Cromossomo: "+str(chromossome))
 
     goal_value = 6
 
     op = operation(x, y, z)
-    #print("X ({0}) + Y({1}) + Z({2})  = {3}".format(x,y,z,op))
 
     if op > goal_value:
         return 1
@@ -165,12 +172,12 @@ def roulette_wheel(population):
 
                 break
 
-    return individuals
+    return sorted(individuals, key=greater_fitness,reverse=True)
 
 
 def one_point_crossover(parent_1, parent_2):
     length = len(parent_1)
-    cut_point = random.randint(0, length)
+    cut_point = random.randint(0, length - 1)
 
     son_1 = str(parent_1[0:cut_point]) + str(parent_2[cut_point: length])
 
@@ -197,7 +204,7 @@ def mutation(population):
 
 
 def prinIdvs(population):
-    print("Population: ")
+    print("Decimal: ")
     for i in range(len(population)):
         x, y, z = chromosome_breaker(population[i])
         print("({0} + {1} + {2} = {3} )".format(bin2dec(x),bin2dec(y),bin2dec(z),operation(bin2dec(x),bin2dec(y),bin2dec(z))),end =" ")
@@ -209,34 +216,31 @@ def prinIdvs(population):
 # início do algoritmo genético
 new_population = create_population(POPULATION_NUMBER)
 print("População inicial...")
-print(new_population)
-prinIdvs(new_population)
 
 for i in range(GENERATIONS_NUMBER):
 
     print("* * * GERAÇÃO {0} * * *".format(i+1))
+    prinIdvs(new_population)
     # selecao dos individuos para a reproducao
     selected_individuals = roulette_wheel(new_population)
     print("Individuos selecionados...")
-    print(selected_individuals)
     prinIdvs(selected_individuals)
     # realiza o cruzamento
+    print("Crossover...")
     n_sons = crossover(selected_individuals)
-    print("Filhos do cruzamento...")
-    print(n_sons)
     prinIdvs(n_sons)
     # chance de mutação
     n_sons = mutation(n_sons)
     print("Mutação?...")
-    print(n_sons)
+    prinIdvs(n_sons)
     #pega os sobreviventes
     survivavors = get_survivors(new_population)
     print("Sobreviventes...")
-    print(survivavors)
     prinIdvs(survivavors)
 
     #nova população
     new_population = (survivavors + n_sons)
+    print("* * * * * * * * * * *")
 
 
 

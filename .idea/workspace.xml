@@ -16,8 +16,8 @@
       <file leaf-file-name="GeneticAlgorithm.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GeneticAlgorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="135" column="30" selection-start-line="135" selection-start-column="30" selection-end-line="135" selection-end-column="30" />
+            <state relative-caret-position="236">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#80#93#0" expanded="true" />
               </folding>
@@ -51,10 +51,14 @@
       <find>fitness(population[i])</find>
       <find>roulet</find>
       <find>print</find>
-      <find>crossover</find>
       <find>range</find>
       <find>range(</find>
       <find>selected</find>
+      <find>GENOTYPES_NUMBER</find>
+      <find>roulette_</find>
+      <find>crossover</find>
+      <find>create</find>
+      <find>create_indi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,7 +157,7 @@
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32913387" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6251969" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Favorites" side_tool="true" />
@@ -179,8 +183,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GeneticAlgorithm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="135" column="30" selection-start-line="135" selection-start-column="30" selection-end-line="135" selection-end-column="30" />
+        <state relative-caret-position="236">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="e#80#93#0" expanded="true" />
           </folding>
