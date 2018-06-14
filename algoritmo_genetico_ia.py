@@ -10,7 +10,7 @@ SURVIVAL_RATE = 0.2
 CROSSOVER_RATE = (1 - SURVIVAL_RATE)
 MUTATION_RATE = 0.1
 
-GENERATIONS_NUMBER = 1
+GENERATIONS_NUMBER = 100
 POPULATION_NUMBER = 6
 
 
@@ -83,7 +83,7 @@ def chromosome_breaker(chromosome):
 def is_valid_chromosome(chromosome):
     x, y, z, w = chromosome_breaker(chromosome)
 
-    cond1, cond2 = operation(x,y,z,w)
+    cond1, cond2 = operation(x, y, z, w)
 
     if cond1 <= 185 and cond2 <= 15:
         return True
@@ -137,12 +137,12 @@ def get_survivors(population):
     number_individuals = round(POPULATION_NUMBER * SURVIVAL_RATE)
 
     # ordena os valores da populacao de maneira decrescente pelo valor do fitness para a seleção
-    population = sorted(population, key=greater_fitness)
+    population = sorted(population, key=greater_fitness,reverse= True)
 
     survivors = []
 
     for i in range(number_individuals):
-        survivors.append(population[len(population)-i-1])
+        survivors.append(population[i])
 
     return survivors
 
@@ -180,7 +180,7 @@ def roulette_wheel(population):
                 selected_individuals_indexes.append(index)
                 n_individuas_current += 1
                 break
-   
+
     return sorted(individuals, key=greater_fitness, reverse=True)
 
 
@@ -196,18 +196,19 @@ def one_point_crossover(parent_1, parent_2):
 def crossover(population):
     sons = []
     length = len(population)
-    c_index = 0
 
-    while c_index < length:
+    while len(sons) < length:
 
         i_1 = random.randint(0, len(population) - 1)
         i_2 = random.randint(0, len(population) - 1)
+
+        if i_1 == i_2:
+            continue
 
         new_son = one_point_crossover(population[i_1], population[i_2])
 
         if is_valid_chromosome(new_son):
             sons.append(new_son)
-            c_index += 1
 
     return sons
 
@@ -242,7 +243,8 @@ def mutation(population):
     number_random = random.randint(0, 100)
 
     # mutação acontece?
-    if number_random <= MUTATION_RATE * 100:
+    #if number_random <= MUTATION_RATE * 100:
+    if True:
         print("Mutação aconteceu! ")
         #escolhe aleatoriamente o individuo
         index = random.randint(0, len(population)-1)
@@ -253,7 +255,7 @@ def mutation(population):
             index = random.randint(0, len(population) - 1)
             new_ind = mutation_gene(population[index])
 
-        population[index] = mutation_gene(population[index])
+        population[index] = new_ind
 
     else:
         print("Mutação não aconteceu. :( ")
@@ -277,9 +279,10 @@ prinIdvs(new_population)
 #print("Binários:")
 print(new_population)
 
+current_generation = 1
 
-for c_i in range(GENERATIONS_NUMBER):
-    print("* * * GERAÇÃO {0} * * *".format(c_i + 1))
+while current_generation <= GENERATIONS_NUMBER:
+    print("* * * GERAÇÃO {0} * * *".format(current_generation))
     # selecao dos individuos para a reproducao
     print("Seleção...")
     selected_individuals = roulette_wheel(new_population)
@@ -302,6 +305,8 @@ for c_i in range(GENERATIONS_NUMBER):
     print("* * * Nova população * * * ")
     prinIdvs(new_population)
     #print("* * * * * * * * * * *")
+
+    current_generation += 1
 
 print("Nova população: ")
 print(new_population)

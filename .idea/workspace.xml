@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83471cbc-14cb-474d-8cd9-89eb792d9609" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algoritmo_genetico_ia.py" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmo_genetico_ia.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="algoritmo_genetico_ia.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/algoritmo_genetico_ia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="246" column="36" selection-start-line="246" selection-start-column="36" selection-end-line="246" selection-end-column="36" />
+            <state relative-caret-position="180">
+              <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
               <folding>
                 <element signature="e#80#93#0" expanded="true" />
               </folding>
@@ -37,9 +36,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>population</find>
-      <find>roul</find>
-      <find>randin</find>
       <find>fitness(population[i])</find>
       <find>roulet</find>
       <find>print</find>
@@ -48,7 +44,6 @@
       <find>selected</find>
       <find>GENOTYPES_NUMBER</find>
       <find>roulette_</find>
-      <find>crossover</find>
       <find>create</find>
       <find>individual</find>
       <find>create_indi</find>
@@ -67,6 +62,10 @@
       <find>is_valid</find>
       <find>selel</find>
       <find>mutacao</find>
+      <find>crossover</find>
+      <find>crossover(</find>
+      <find>survi</find>
+      <find>mutation</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -235,8 +234,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/algoritmo_genetico_ia.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="246" column="36" selection-start-line="246" selection-start-column="36" selection-end-line="246" selection-end-column="36" />
+        <state relative-caret-position="180">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
           <folding>
             <element signature="e#80#93#0" expanded="true" />
           </folding>
