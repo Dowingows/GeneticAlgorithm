@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83471cbc-14cb-474d-8cd9-89eb792d9609" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algoritmo_genetico_ia.py" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmo_genetico_ia.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +17,8 @@
       <file leaf-file-name="algoritmo_genetico_ia.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/algoritmo_genetico_ia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="234" column="43" selection-start-line="234" selection-start-column="43" selection-end-line="234" selection-end-column="43" />
+            <state relative-caret-position="108">
+              <caret line="215" lean-forward="true" selection-start-line="215" selection-end-line="215" />
               <folding>
                 <element signature="e#80#93#0" expanded="true" />
               </folding>
@@ -36,7 +37,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>INDIVIDUAL_NUMBER</find>
       <find>POPULATION_NUMBER</find>
       <find>Q</find>
       <find>sum</find>
@@ -66,6 +66,7 @@
       <find>create_popula</find>
       <find>create_popu</find>
       <find>cond</find>
+      <find>cut_point</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,8 +228,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/algoritmo_genetico_ia.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="234" column="43" selection-start-line="234" selection-start-column="43" selection-end-line="234" selection-end-column="43" />
+        <state relative-caret-position="108">
+          <caret line="215" lean-forward="true" selection-start-line="215" selection-end-line="215" />
           <folding>
             <element signature="e#80#93#0" expanded="true" />
           </folding>

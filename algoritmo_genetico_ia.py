@@ -9,7 +9,7 @@ SURVIVAL_RATE = 0.2
 CROSSOVER_RATE = (1 - SURVIVAL_RATE)
 MUTATION_RATE = 0.1
 
-GENERATIONS_NUMBER = 1
+GENERATIONS_NUMBER = 30
 POPULATION_NUMBER = 6
 
 
@@ -214,14 +214,15 @@ def crossover(population):
 
 def mutation_gene(individual):
 
-    print("Acontecendo mutação")
     length = len(individual)
     cut_point = random.randint(0, length - 1)
 
-    if individual[cut_point] == '0':
-        individual[cut_point] = '1'
+    newInd = list(individual)
+
+    if newInd[cut_point] == '0':
+        newInd[cut_point] = '1'
     else:
-        individual[cut_point] = '0'
+        newInd[cut_point] = '0'
 
     return individual
 
@@ -251,9 +252,9 @@ def prinIdvs(population):
 # início do algoritmo genético
 new_population = create_population(POPULATION_NUMBER)
 print("===> População inicial <===")
-prinIdvs(new_population)
-print("Binários:")
-print(new_population)
+#prinIdvs(new_population)
+#print("Binários:")
+#print(new_population)
 
 
 for c_i in range(GENERATIONS_NUMBER):
